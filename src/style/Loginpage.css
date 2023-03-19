@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Serif+Display:400|Roboto:700,300,500,700italic,300italic|Inter:400,500");
+
+@import url("https://fonts.googleapis.com/css?family=DM+Serif+Display:400|Roboto:700,300,500,700italic,300italic|Inter:400,500");
+
+
+
+ 
+.logocontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+  }
+
+  button {
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+position: absolute;
+background: #D77C61;
+border-radius: 3px;
+  }
+
+  
+  /* Set the width of the logo */
+  .logo {
+    box-sizing: border-box;
+    left: 0%;
+    right: 48.75%;
+    top: 11.06%;
+    bottom: 0%;
+  }
+
+  .fillOut{
+    color : black;
+    font-family: var(--font-family-dm_serif_display);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  }
+
+
+  .userInfo{
+      color: red;
+  }
+
+  .container .title {
+   color :#000000 black;
+   font-family: var(--font-family-dm_serif_display);
+   font-weight: 400;
+
+  }
+
+  .boxToFill{
+
+    width: 365px;
+    height: 39px;
+    left: 542px;
+    top: 475px;
+    border: 1px solid #000000;
+    background: #D77C61;
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+    
+}
+
+.loginFormBack{
+    position: absolute;
+    width: 453px;
+    height: 392px;
+    left: 700px;
+    top: 150px;
+     background-color: #FDC1C1;
+        color: black;
+        padding: 0.5rem 1rem;
+        border: 1px solid #000000;
+        border-radius: 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 250ms;
+        grid-column: auto / span 2;
+    }
+  
+   

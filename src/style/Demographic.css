@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Serif+Display:400|Roboto:700,300,500,700italic,300italic|Inter:400,500");
+
+
+
+
+
+.demographic-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.logo {
+  box-sizing: border-box;
+  
+  left: 0%;
+  right: 48.75%;
+  top: 11.06%;
+  bottom: 0%;
+}
+
+.form {
+  width: 50%;
+}
+
+.title{
+
+width: 861px;
+height: 28px;
+left: 66px;
+top: 38px;
+font-family: 'ABeeZee';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 28px;
+display: flex;
+align-items: center;
+color: black;
+}
+
+.input-container {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.text-input,
+.dropdown {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+h2 {
+  text-align: left;
+}
