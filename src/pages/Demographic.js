@@ -90,7 +90,7 @@ const Demographic = () => {
           <select
             className="dropdown"
             value={race}
-            onChange={(e) => handleInputChange(e, setRace)}
+            onChange={(e) => setRace(e.target.value)}
           >
             <option value="asian">Asian</option>
             <option value="black">Black</option>

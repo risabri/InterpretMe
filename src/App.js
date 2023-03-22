@@ -1,47 +1,50 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Loginpage from './pages/Loginpage';
-import LoginButton from './pages/Loginbutton';
-import Profile from './pages/Profile';
-import LogoutButton from './pages/Logoutbutton';
-import Demographic from './pages/Demographic';
-import Explanation from './pages/Explanation';
-import Detailpage from './pages/Detailpage';
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-
-
+import LoginButton from "./pages/LoginButton";
+import Profile from "./pages/Profile";
+import Demographic from "./pages/Demographic";
+import Checklist from "./pages/Checklist";
+import AnotherPage from "./pages/AnotherPage";
+import LogoutButton from "./pages/LogoutButton";
 
 function App() {
-  const { isLoading, error } = useAuth0();
+  const [showDemographic, setShowDemographic] = useState(false);
+  const [showChecklist, setShowChecklist] = useState(false);
+  const [showAnotherPage, setShowAnotherPage] = useState(false);
+  const { isAuthenticated } = useAuth0();
+
+  const handleInterpret = () => {
+    setShowDemographic(true);
+  };
+
+  const handleNextDemographic = () => {
+    setShowDemographic(false);
+    setShowChecklist(true);
+  };
+
+  const handleNextChecklist = () => {
+    setShowChecklist(false);
+    setShowAnotherPage(true);
+  };
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<div>
-          <h1>
-            Auth0 log in </h1>
-            <LoginButton/>
-            {error && <p>Authentication Error</p>}
-      {!error && isLoading && <p>Loading...</p>}
-      {!error && !isLoading && (
-        <>
-            <Profile/>
-            <LogoutButton/>
-            </>
-          )}
-        
-        </div>} />
-        <Route path="/demographic" element={<Demographic />} />
-        <Route path="/loginpage" element={<Loginpage />} />
-        <Route path="/explanation" element={<Explanation />} />
+    <div>
+      {!isAuthenticated && <LoginButton />}
+      {isAuthenticated && !showDemographic && !showChecklist && !showAnotherPage && (
+        <Profile onInterpret={handleInterpret} />
+    
+      )}
 
-        <Route path="/detailpage" element={<Detailpage/>} />
-
-      </Routes>
-    </Router>
+        <LogoutButton />
+      {isAuthenticated && showDemographic && (
+        <Demographic onNext={handleNextDemographic} />
+      )}
+      {isAuthenticated && showChecklist && (
+        <Checklist onNext={handleNextChecklist} />
+      )}
+      {isAuthenticated && showAnotherPage && <AnotherPage />}
+    </div>
   );
 }
-
-
 
 export default App;

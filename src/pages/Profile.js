@@ -1,26 +1,18 @@
-import { useAuth0 } from '@auth0/auth0-react';
+// Profile.js
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
+const Profile = ({ onInterpret }) => {
+  const { user } = useAuth0();
 
-// welcome to interpret me !
+  return (
+    <div>
+      <img src={user.picture} alt={user.name} />
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+      <button onClick={onInterpret}>Let's Interpret</button>
+    </div>
+  );
+};
 
-
-
-const Profile = () => {
-    const { user, isAuthenticated } = useAuth0();
-
-    return (
-        isAuthenticated && (
-            <article className='column'>
-                {user?.picture && <img src={user.picture} alt={user?.name} />}
-                <h2>{user?.name}</h2>
-                <ul>
-                    {Object.keys(user).map((objKey, i) => <li key={i}>{objKey}: {user[objKey]} </li>)}
-
-                
-                </ul>
-            </article>
-        )
-    )
-}
-
-export default Profile
+export default Profile;
