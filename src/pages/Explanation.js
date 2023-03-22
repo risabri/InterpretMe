@@ -30,7 +30,7 @@ const Explanation = () => {
         </div>
         <div className="question">
         <label htmlFor="q2">What are some content of the post?</label>
-                <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">>
+                <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">
                     <option value="text">Text</option>
                     <option value="emoji">Emoji</option>
                     <option value="option3">image</option>
@@ -38,11 +38,11 @@ const Explanation = () => {
         </div>
 
         <div className="question">
-          <label htmlFor="q3">Anything you would like to add about the content of the post ? </label>
+          <label htmlFor="q3">Please share your initial thoughts and reflections of the uploaded post. </label>
           <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
         </div>
         <div className="button-container">
-          <button type="submit" className="next-button">Next</button>
+          <button type="submit" className="next-button">Next</button> 
         </div>
       </form>
     </div>

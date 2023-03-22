@@ -32,10 +32,13 @@ const Detailpage = () => {
         </div>
         <div className="question">
         <label htmlFor="q2">Who wrote the post ?</label>
-                <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">>
+                <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">
                     <option value="student">Student</option>
                     <option value="Professor">Professor</option>
                     <option value="rw">Regular Worker</option>
+                    <option value="youth">Youth</option>
+                    <option value="potential">Portential Employee</option>
+                    <option value="other">Other</option>
                 </select>
         </div>
 
