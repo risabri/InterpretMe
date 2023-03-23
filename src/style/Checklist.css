@@ -1,0 +1,15 @@
+.checklist-item {
+    margin-bottom: 10px;
+  }
+  
+  .checklist-item label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    font-size: 16px;
+  }
+  
+  .checklist-item input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  

@@ -29,22 +29,57 @@ const Detailpage = ({ onAuthorpost }) => {
       formData.append('file', picture);
       formData.append('filename', picture.name);
       formData.append('content_type', picture.type);
-  
       try {
-        const response = await axios.post(
-          `${apiUrl}`, // Change this line
-          formData,
+        const createRecordResponse = await axios.post(
+          apiUrl,
+          {
+            fields: {
+              "Where": q1,
+              "Who": q2,
+              "Content": q3,
+            },
+          },
           {
             headers: {
-              'Authorization': `Bearer ${apiKey}`,
-              'Content-Type': 'multipart/form-data',
+              "Authorization": `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
             },
           }
         );
-        pictureUrl = response.data[0].url;
-        console.log('Picture uploaded successfully');
+    
+        const recordId = createRecordResponse.data.id;
+    
+        // Upload the attachment to the created record
+
+    if (picture) { 
+        try {
+          const response = await axios.patch(
+            `${apiUrl}/${recordId}`,
+            {
+              fields: {
+                "Attachment": [
+                  {
+                    url: picture.preview,
+                    filename: picture.name,
+                  },
+                ],
+              },
+            },
+            {
+              headers: {
+                "Authorization": `Bearer ${apiKey}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+    
+          console.log("Upload successful:", response.data);
+        } catch (error) {
+          console.error("Error uploading picture:", error);
+        }
+    }
       } catch (error) {
-        console.error('Error uploading picture:', error);
+        console.error("Error adding record to Airtable:", error);
       }
     }
   
@@ -73,9 +108,16 @@ const Detailpage = ({ onAuthorpost }) => {
 <div className="logoContainer"> 
       <img src={logo1} alt="logo1" className="logo" />
       <div className="container">
+      <h1 className="title"> 
+      We will ask you questions about the content of the post 
+      </h1>
+      <form onSubmit={handleSubmit}>
+        <div>
 
-                  <div className="question">
-              <label htmlFor="picture">Upload a picture: </label>
+        </div>
+
+      <div className="question">
+              <label htmlFor="picture">Please upload a file with the content that you would like to interpret </label>
               <input
                 type="file"
                 id="picture"
@@ -84,13 +126,6 @@ const Detailpage = ({ onAuthorpost }) => {
                 onChange={(e) => setPicture(e.target.files[0])}
               />
             </div>
-
-
-        
-      <h1 className="title"> 
-      We will ask you questions about the content of the post 
-      </h1>
-      <form onSubmit={handleSubmit}>
         <div className="question">
           <label htmlFor="q1">Where was this post written ? </label>
           <textarea id="q1" name="q1" value={q1} onChange={(e) => setQ1(e.target.value)} />
@@ -108,7 +143,7 @@ const Detailpage = ({ onAuthorpost }) => {
         </div>
 
         <div className="question">
-          <label htmlFor="q3">what type of content is in the post  ? </label>
+          <label htmlFor="q3">What type of content is in the post  ? </label>
           <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
         </div>
         <div className="button-container">

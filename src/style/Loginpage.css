@@ -3,13 +3,15 @@
 @import url("https://fonts.googleapis.com/css?family=DM+Serif+Display:400|Roboto:700,300,500,700italic,300italic|Inter:400,500");
 
 
+.logoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
- 
-.logocontainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px;
+  .container img {
+    margin-right: 10px;
+    
   }
 
   button {
