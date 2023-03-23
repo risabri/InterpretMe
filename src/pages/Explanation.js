@@ -3,7 +3,7 @@ import '../style/Detailpage.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
-const Explanation = ({ onAuthorpost }) => {
+const Explanation = ({ onDetailpage }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
@@ -42,7 +42,7 @@ const Explanation = ({ onAuthorpost }) => {
           <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
         </div>
         <div className="button-container">
-        <button onClick={onAuthorpost}>Next </button>
+        <button onClick={onDetailpage}>Next </button>
         </div>
       </form>
     </div>

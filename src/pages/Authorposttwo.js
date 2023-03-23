@@ -28,6 +28,8 @@ const Authorposttwo = () => {
       We will ask you questions about the author of the post 
       </h1>
       <form onSubmit={handleSubmit}>
+
+        
         <div className="question">
           <label htmlFor="q1">Please reach out to your friends and family members who have the shared identity, 
           socio-cultural context to help you to understand the context of the post. Please share their thoughts and your reflections below. </label>
