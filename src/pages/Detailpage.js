@@ -5,7 +5,7 @@ import logo1 from '../components/logo1.svg';
 import axios from 'axios'; // Import axios
 import Airtable from 'airtable';
 
-const Detailpage = ({onAuthorpost}) => {
+const Detailpage = ({ onAuthorpost }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
@@ -14,23 +14,25 @@ const Detailpage = ({onAuthorpost}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log('handleSubmit called'); // Add this line
+  
     console.log(`Q1: ${q1}, Q2: ${q2}, Q3: ${q3}`);
-
+  
     let pictureUrl = '';
-
+  
     const apiKey = 'patOKbcDZPh471ZJx.9a731e09d49e5bdcd2d8de1d733de44bb0ce0881a175b86145d32d4c1f80ab1b';
     const apiUrl = 'https://api.airtable.com/v0/appkf16Kyl7p9Fe7z/tblnBXmuxJ1lCAqqP';
-
+  
     if (picture) {
       // Upload the picture to Airtable
       const formData = new FormData();
       formData.append('file', picture);
       formData.append('filename', picture.name);
       formData.append('content_type', picture.type);
-
+  
       try {
         const response = await axios.post(
-          `${apiUrl}/attachments`,
+          `${apiUrl}`, // Change this line
           formData,
           {
             headers: {
@@ -45,7 +47,7 @@ const Detailpage = ({onAuthorpost}) => {
         console.error('Error uploading picture:', error);
       }
     }
-
+  
     // Create a new record in Airtable with the user's input and picture URL
     try {
       await axios.post(apiUrl, {
@@ -110,7 +112,8 @@ const Detailpage = ({onAuthorpost}) => {
           <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
         </div>
         <div className="button-container">
-        <button onClick={onAuthorpost}>Next </button>
+        <button type="submit">Submit</button>
+        <button onClick={onAuthorpost }>Next </button>
         </div>
       </form>
     </div>
