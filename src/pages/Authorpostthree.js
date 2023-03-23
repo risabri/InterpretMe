@@ -3,7 +3,7 @@ import '../style/Authorpost.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
-const Authorpostthree = () => {
+const Authorpostthree = ({onChecklist}) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
@@ -55,7 +55,7 @@ const Authorpostthree = () => {
 
         <div className="button-container">
             
-          <button type="submit" className="next-button">Next</button>
+        <button onClick={onChecklist}>Next</button>
         </div>
       </form>
     </div>

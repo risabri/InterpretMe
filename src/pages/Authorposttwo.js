@@ -3,7 +3,7 @@ import '../style/Authorposttwo.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
-const Authorposttwo = () => {
+const Authorposttwo = ({ onAuthorPostthree }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
@@ -66,15 +66,8 @@ const Authorposttwo = () => {
      
                 </select>
         </div>
-
-        
-
-
-
-
-        <div className="button-container">
-            
-          <button type="submit" className="next-button">Next</button>
+        <div className="button-container"> 
+        <button onClick={onAuthorPostthree}>Next</button>
         </div>
       </form>
     </div>

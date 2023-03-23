@@ -3,7 +3,7 @@ import '../style/Authorpost.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
-const Authorpost = ({ onAuthorpagetwo }) => {
+const Authorpost = ({ onAuthorPosttwo }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
@@ -52,7 +52,7 @@ const Authorpost = ({ onAuthorpagetwo }) => {
         <label htmlFor="q3">Please share their thoughts and your reflections below. </label>
         </div>
         <div className="button-container">
-        <button onClick={onAuthorpagetwo}>Next</button>
+        <button onClick={onAuthorPosttwo}>Next</button>
         </div>
       </form>
     </div>
