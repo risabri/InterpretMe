@@ -16,10 +16,19 @@ const LoginButton = () => {
       <div className="welcome-message">
         Welcome to Interpret-me Home page! This website will help you [introduction]!
       <h1 className = "signinbuttoncontainer">
-      <button className="sign-in-btn" onClick={() => loginWithRedirect()}>
-        Sign In
-      </button>
-      </h1>
+
+                <h1 className="signinbuttoncontainer">
+            { !isAuthenticated && (
+                <button className="sign-in-btn" onClick={() => loginWithRedirect()}>
+                Sign In
+                </button>
+            )}
+            </h1>
+         </h1>
+
+
+
+
       </div>
     </div>
  </div>
