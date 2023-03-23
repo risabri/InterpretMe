@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../style/Demographic.css';
 import logo1 from '../components/logo1.svg';
 
-const Demographic = () => {
+const Demographic = ({ onExplanation })  => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
@@ -15,6 +15,8 @@ const Demographic = () => {
     // You can use the state values to store data in the database.
     console.log({ firstName, lastName, gender, sexuality, education, race });
   };
+
+
 
   return (
     <div className="demographic-container">
@@ -102,6 +104,11 @@ const Demographic = () => {
         <button type="submit" className="submit-button">
           Submit
         </button>
+        <button onClick={onExplanation}>Next </button>
+        
+        Next
+       
+
       </form>
     </div>
   );

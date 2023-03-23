@@ -1,47 +1,45 @@
-import React from 'react';
+import { useState } from "react";
 
 const Checklist = ({ onNext }) => {
-  const [checkedItems, setCheckedItems] = React.useState({});
+  const [checkedItems, setCheckedItems] = useState(new Set());
 
-  const handleChange = (event) => {
-    setCheckedItems({
-      ...checkedItems,
-      [event.target.name]: event.target.checked,
+  const handleChange = (e) => {
+    const item = e.target.name;
+    const isChecked = e.target.checked;
+
+    setCheckedItems((prevCheckedItems) => {
+      const newCheckedItems = new Set(prevCheckedItems);
+      isChecked ? newCheckedItems.add(item) : newCheckedItems.delete(item);
+      return newCheckedItems;
     });
   };
 
-  const handleNext = () => {
-    if (Object.values(checkedItems).every((isChecked) => isChecked)) {
+  const allChecked = checkedItems.size === 10;
+
+  const handleClick = () => {
+    if (allChecked) {
       onNext();
-    } else {
-      alert('Please check all the items before proceeding.');
     }
   };
 
   return (
     <div>
-      <h2>Checklist</h2>
-      <div>
-        <input
-          type="checkbox"
-          id="item1"
-          name="item1"
-          checked={checkedItems['item1'] || false}
-          onChange={handleChange}
-        />
-        <label htmlFor="item1">Item 1</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="item2"
-          name="item2"
-          checked={checkedItems['item2'] || false}
-          onChange={handleChange}
-        />
-        <label htmlFor="item2">Item 2</label>
-      </div>
-      <button onClick={handleNext}>Next</button>
+      <h1>Checklist</h1>
+      {Array.from({ length: 10 }, (_, i) => `c${i + 1}`).map((item) => (
+        <div key={item}>
+          <label>
+            <input
+              type="checkbox"
+              name={item}
+              onChange={handleChange}
+            />
+            {item}
+          </label>
+        </div>
+      ))}
+      {allChecked && (
+        <button onClick={handleClick}>Go to another page</button>
+      )}
     </div>
   );
 };
