@@ -11,8 +11,13 @@ import Authorpostthree from "./pages/Authorpostthree";
 import Checklist from "./pages/Checklist";
 import AnotherPage from "./pages/AnotherPage";
 import LogoutButton from "./pages/LogoutButton";
+import 'react-dotenv';
 
 
+// const airtable_url = process.env.REACT_APP_API_URL;
+// const apiKey = process.env.REACT_APP_API_KEY;
+console.log(`${process.env.REACT_APP_API_URL}`)
+// console.log(apiKey)
 
 function App() {
   const { isAuthenticated } = useAuth0();
