@@ -1,14 +1,28 @@
 import '../style/Explanation.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import logo1 from '../components/logo1.svg';
 
 const Explanation = ({ onDetailpage }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
-  const [picture, setPicture] = useState(null);
   const [selectedItems, setSelectedItems] = useState({ text: false, emoji: false, image: false, location : false, people : false, video : false  });
   const [descriptions, setDescriptions] = useState({ text: '', emoji: '', image: '', location: '', people: '', video: '' });
+  const [picture, setPicture] = useState(null);
+  const [imageURL, setImageURL] = useState('');
+
+    
+  useEffect(() => {
+    if (picture) {
+      const url = URL.createObjectURL(picture);
+      setImageURL(url);
+
+      // Cleanup the created URL when component unmounts or a new picture is uploaded
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }
+  }, [picture]);
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -30,7 +44,7 @@ const Explanation = ({ onDetailpage }) => {
 
   return (
     <div className="logoContainer ">
-      <img src={logo1} alt="logo1" className="logo" />
+     <img src={imageURL || logo1} alt="logo1" className={imageURL ? "uploaded-image" : "logo"} />
 
       <div className="container">
         <h1 className="title"> </h1>
@@ -45,6 +59,7 @@ const Explanation = ({ onDetailpage }) => {
               onChange={(e) => setPicture(e.target.files[0])}
             />
           </div>
+         
           <div className="question">
             <label>Please select all applicable media content in the post and describe what you understand from them.*</label>
             {['Text', 'Emoji', 'Image', 'Location', 'People tagged', 'Video'].map((item) => (

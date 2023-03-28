@@ -10,6 +10,12 @@
     margin-right: 10px;
     
   }
+  .uploaded-image {
+    max-width: 500px; /* Set the maximum width */
+    max-height: 300px; /* Set the maximum height */
+    object-fit: contain; /* Keep the aspect ratio of the image */
+  }
+
   .description-input {
     flex: 1;
     height: 30px;
