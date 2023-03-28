@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../style/Demographic.css';
 import logo1 from '../components/logo1.svg';
 
+
 const Demographic = ({ onExplanation })  => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');

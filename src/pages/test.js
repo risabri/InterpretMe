@@ -11,6 +11,3 @@
 //anotherpage
 //submit 
 
-
-//changer explanation to detail
-//changer detail to authorpost1

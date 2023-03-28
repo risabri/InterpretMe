@@ -2,6 +2,7 @@
 import '../style/Authorposttwo.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
+import { load_post_written } from '../pages/Fetcher';
 
 const Authorposttwo = ({ onAuthorPostthree }) => {
   const [q1, setQ1] = useState('');
@@ -10,11 +11,12 @@ const Authorposttwo = ({ onAuthorPostthree }) => {
   const [q4, setQ4] = useState('');
   const [q5, setQ5] = useState('');
  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // You can use the q1, q2, and q3 values here to do something with the user's input
     console.log(`Q1: ${q1}, Q2: ${q2}, Q3: ${q3}, Q3: ${q4}, Q3: ${q5}`);
     // Redirect to the next page here
+    await load_post_written(q1) // if i want q1 to go in the filed of name 
   };
 
   return (
@@ -25,18 +27,18 @@ const Authorposttwo = ({ onAuthorPostthree }) => {
 
         
       <h1 className="title"> 
-      We will ask you questions about the author of the post 
+     Stage 2 : Reflect
       </h1>
       <form onSubmit={handleSubmit}>
 
         
         <div className="question">
-          <label htmlFor="q1">Please reach out to your friends and family members who have the shared identity, 
-          socio-cultural context to help you to understand the context of the post. Please share their thoughts and your reflections below. </label>
+          <label htmlFor="q1">Please reflect as if you’re an immediate family member (Ex: mother, father, brothers, sisters, and cousins) 
+          how would you understand this post? What would be possible reasons for the post? Please share your reflections below* </label>
           <textarea id="q1" name="q1" value={q1} onChange={(e) => setQ1(e.target.value)} />
         </div>
         <div className="question">
-        <label htmlFor="q2">Please check all the applicable options ?</label>
+        <label htmlFor="q2">Please check all the applicable options </label>
                 <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">/
                     <option value="noinfo">No information online about the author’s post</option>
                     <option value="fake">This feels like a fake social media profile</option>
@@ -46,20 +48,13 @@ const Authorposttwo = ({ onAuthorPostthree }) => {
         </div>
 
         <div className="question">
-          <label htmlFor="q3">Please reach out to peers who have a similar online presence / 
-          lived-online experience and reflect with them on the context and circumstances of the post. 
-          Please share your inputs and reflections. </label>
+          <label htmlFor="q3">Please reflect with your friend and/or a colleague who have similar identity and lived experiences 
+          of the post author and ask about their understanding of the post? What would be possible reasons for the post? Please add their inputs below. </label>
           <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
         </div>
-
         <div className="question">
-          <label htmlFor="q4">Please reach out to your friends and family members who have the shared identity, 
-          socio-cultural context to help you to understand the context of the post. Please share their thoughts and your reflections below. </label>
-          <textarea id="q4" name="q1" value={q1} onChange={(e) => setQ4(e.target.value)} />
-        </div>
-        <div className="question">
-        <label htmlFor="q5">Please check all the applicable options ?</label>
-                <select id="q2" name="q5" value={q2} onChange={(e) => setQ5(e.target.value)} className="dropdown">/
+        <label htmlFor="q5">Please check all the applicable options </label>
+                <select id="q5" name="q5" value={q5} onChange={(e) => setQ5(e.target.value)} className="dropdown">/
                     <option value="noinfo">No information online about the author’s post</option>
                     <option value="fake">This feels like a fake social media profile</option>
                     <option value="noaccess">I do not have access to private profiles to learn more about the author </option>

@@ -11,6 +11,7 @@ import Authorpostthree from "./pages/Authorpostthree";
 import Checklist from "./pages/Checklist";
 import AnotherPage from "./pages/AnotherPage";
 import LogoutButton from "./pages/LogoutButton";
+import Thanks from "./pages/Thanks";
 import 'react-dotenv';
 
 
@@ -57,6 +58,10 @@ function App() {
     setCurrentPage("anotherPage");
   };
 
+  const handleThanks = () => {
+    setCurrentPage("thanks");
+  };
+
 
 
   return (
@@ -71,7 +76,8 @@ function App() {
       {isAuthenticated && currentPage === "authorPosttwo" &&  <Authorposttwo onAuthorPostthree ={handleAuthorpostthree} />} 
       {isAuthenticated && currentPage === "authorPostthree" &&  <Authorpostthree onChecklist={handleNextChecklist} />}
       {isAuthenticated && currentPage === "checklist" && <Checklist onNext={handleAnotherPage} />}
-      {isAuthenticated && currentPage === "anotherPage" && <AnotherPage />}
+      {isAuthenticated && currentPage === "anotherPage" && <AnotherPage onThanks ={handleThanks} />}
+      {isAuthenticated && currentPage === "thanks" && <Thanks />}
 
 
 

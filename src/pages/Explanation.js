@@ -1,4 +1,4 @@
-import '../style/Detailpage.css';
+import '../style/Explanation.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
@@ -29,7 +29,7 @@ const Explanation = ({ onDetailpage }) => {
   };
 
   return (
-    <div className="logoContainer">
+    <div className="logoContainer ">
       <img src={logo1} alt="logo1" className="logo" />
 
       <div className="container">
@@ -47,8 +47,8 @@ const Explanation = ({ onDetailpage }) => {
           </div>
           <div className="question">
             <label>Please select all applicable media content in the post and describe what you understand from them.*</label>
-            {['text', 'emoji', 'image', 'location', 'people', 'video'].map((item) => (
-              <div key={item}className="checkbox-container">
+            {['Text', 'Emoji', 'Image', 'Location', 'People tagged', 'Video'].map((item) => (
+              <div key={item} className="checkbox-container">
                 <div className="checkbox-item">
                 <input
                   type="checkbox"
@@ -66,16 +66,17 @@ const Explanation = ({ onDetailpage }) => {
                   value={descriptions[item]}
                   onChange={handleDescriptionChange}
                   disabled={!selectedItems[item]}
+                  className="description-input"
                   placeholder={`Describe ${item}`}
                 />
                   
               </div>
             ))}
           </div>
-          <div className="question">
-            <label htmlFor="q3">Please share your initial thoughts and reflections of the uploaded post. </label>
+          {/* <div className="question">
+            <label htmlFor="q3">Please describe the purpose of using InterpretMe. </label>
             <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
-          </div>
+          </div> */}
           <div className="button-container">
             <button onClick={onDetailpage}>Next </button>
           </div>

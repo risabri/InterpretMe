@@ -155,7 +155,7 @@ const Checklist = ({ onNext }) => {
       
       
       {allChecked && (
-        <button onClick={handleClick}>Report</button>
+        <button className="review-button" onClick={handleClick}> Review and generate Report</button>
       )}
     </div>
     </div>

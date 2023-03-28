@@ -1,25 +1,42 @@
 
-
 .logoContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } 
 
 
 .container img {
     margin-right: 10px;
     
   }
-  .checkbox-container {
-    display: flex;
-    align-items: center;
+  .description-input {
+    flex: 1;
+    height: 30px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
   }
+
+  .checkbox-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f2f2f2; /* Change background color */
+    border: 1px solid #ccc; /* Change border */
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+
   
   .checkbox-item {
     display: flex;
-    align-items: center;
-    margin-right: 5px;
+  flex-direction: row; /* Change to row */
+  align-items: center; /* Add this to vertically center the checkbox */
+  gap: 5px;
   }
 
   
@@ -33,18 +50,17 @@
   
   .question {
     margin-bottom: 10px;
-   
   }
   
-  label {
+   label {
     display: block;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
    
-  }
+  } */
   
-  textarea {
+   textarea {
     width: 100%;
     height: 100px;
     padding: 10px;
@@ -53,7 +69,7 @@
     border-radius: 5px;
     background: #DA9786;
 border-radius: 3px;
-  }
+  } 
 
 
   .dropdown {

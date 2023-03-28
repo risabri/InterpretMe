@@ -23,21 +23,27 @@ const Authorpost = ({ onAuthorPosttwo }) => {
 
         
       <h1 className="title"> 
-      We will ask you questions about the author of the post 
+      Stage 1 : Learn 
       </h1>
       <form onSubmit={handleSubmit}>
 
 
+      <div className="question">
+          <label htmlFor="q1">Please try to learn more about authors online and social media experiences and share your inputs and thoughts.*  </label>
+          <textarea id="q1" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
+        </div>
+
+
 
         <div className="question">
-          <label htmlFor="q1">Please check publicly available social engagement, commitments ( example : volunteering and community service ) of the authors and add your learnings.  ? </label>
+          <label htmlFor="q1"> Please  check publicly available social engagements, commitments (Ex: Volunteering and community Service) of the authors and add your learnings*  </label>
           <textarea id="q1" name="q1" value={q1} onChange={(e) => setQ1(e.target.value)} />
         </div>
 
 
 
         <div className="question">
-        <label htmlFor="q2">Please check all the applicable options ?</label>
+        <label htmlFor="q2">Please check all the applicable options </label>
         <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">
          <option value="noinfo">No information online about the author’s post</option>
           <option value="fake">This feels like a fake social media profile</option>
@@ -45,15 +51,16 @@ const Authorpost = ({ onAuthorPosttwo }) => {
         </select>
         </div>
 
-        <div className="question">
+          {/* <div className="question">
         <label htmlFor="q3">Please reach out to your friends and family members who have the shared identity, socio-cultural 
                         context to help you to understand the context of the post. </label>
         <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
         <label htmlFor="q3">Please share their thoughts and your reflections below. </label>
-        </div>
+        </div>  */}
+
         <div className="button-container">
         <button onClick={onAuthorPosttwo}>Next</button>
-        </div>
+        </div> 
       </form>
     </div>
 </div>
