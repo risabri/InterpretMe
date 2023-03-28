@@ -5,6 +5,8 @@ import logo1 from '../components/logo1.svg';
 const Demographic = ({ onExplanation })  => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
   const [sexuality, setSexuality] = useState('');
   const [education, setEducation] = useState('');
@@ -22,9 +24,9 @@ const Demographic = ({ onExplanation })  => {
     <div className="demographic-container">
       <img src={logo1} alt="logo1" className="logo" />
       <form className="form" onSubmit={handleSubmit}>
-        <h2 className="title">Please tell us about you so we can complete your profile </h2>
+        <h2 className="title">Please complete your profile </h2>
         <div className="input-container">
-          <label className="label">First Name</label>
+          <label className="label">First  Name</label>
           <input
             className="text-input"
             type="text"
@@ -41,6 +43,31 @@ const Demographic = ({ onExplanation })  => {
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
+        <div className="input-container">
+          <label className="label">Email ID</label>
+          <input
+            className="text-input"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="input-container">
+          <label className="label">Age</label>
+          <input
+            className="text-input"
+            type="text"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </div>
+        
+
+       
+
+
+
+
         <div className="input-container">
           <label className="label">Gender</label>
           <select
@@ -82,9 +109,10 @@ const Demographic = ({ onExplanation })  => {
             onChange={(e) => setEducation(e.target.value)}
           >
             <option value="hs">High School / GED</option>
-            <option value="cc">Community College</option>
+            <option value="cc">Some College</option>
             <option value="cd">College Degree</option>
             <option value="gd">Graduate Degree</option>
+            <option value="phd">Doctorate (PhD/MD)</option>
           </select>
         </div>
         <div className="input-container">
@@ -98,17 +126,18 @@ const Demographic = ({ onExplanation })  => {
             <option value="black">Black</option>
             <option value="white">White</option>
             <option value="hispanic">Hispianic/Latino</option>
-            <option value="pacific">Pacific Decent</option>
+            <option value="mena">Middle Eastern / Arab </option>
+            <option value="multirace">Multiracial / Biracial </option>
+            <option value="native">Native American </option>
+            <option value="pacific">Pacific islander</option>
+            <option value="nl">Not listed</option>
+            <option value="pnts">Prefer not to say</option>
           </select>
         </div>
-        <button type="submit" className="submit-button">
+        {/* <button type="submit" className="submit-button">
           Submit
-        </button>
+        </button> */}
         <button onClick={onExplanation}>Next </button>
-        
-        Next
-       
-
       </form>
     </div>
   );

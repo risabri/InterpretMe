@@ -11,6 +11,16 @@
     margin-right: 10px;
     
   }
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+  }
 
   
   .title {

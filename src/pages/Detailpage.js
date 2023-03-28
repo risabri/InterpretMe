@@ -24,20 +24,7 @@ const Detailpage = ({ onAuthorpost }) => {
     let pictureUrl = '';
 
     await load_post_written("Flagged",q1)
-
-
-  
-
-
-
   }
-
-  
-
-
-
-  
-   
 
   return (
 <div className="logoContainer"> 

@@ -16,7 +16,7 @@ const Profile = ({ onInterpret }) => {
                 <div className="container">
                  
                     <h2>  Welcome {user.name} !  </h2>
-                    <h10> Please strart your interpretation by
+                    <h10> Please start your interpretation by
                         clicking the button below </h10>
                         <h4>
                         <button onClick={onInterpret}>Let's Interpret</button>

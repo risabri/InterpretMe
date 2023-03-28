@@ -8,27 +8,55 @@
     margin-right: 10px;
   }
 
- .welcome-message{
+ /* .welcome-message{
   
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 
- }
+ } */
+
+ .welcome-message {
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .long-logo {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .signinbuttoncontainer{
+
+    align-items: center;
+    margin-left: -60px;
+    margin-top: -50px;
+
+  }
   
  
   
   .sign-in-btn {
-    background-color: #0072ff;
+    background-color:  #D77C61;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    
+    width: 200px;
+    margin-left: -20px;
   }
   
   .sign-in-btn:hover {
-    background-color: #0062cc;
+    background-color: #d14420;
   }
   

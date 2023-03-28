@@ -1,6 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import logo1 from '../components/logo1.svg';
 import '../style/LoginButton.css';
+import longlogo from '../components/longlogo.png';
+
 
 const LoginButton = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -12,15 +14,17 @@ const LoginButton = () => {
         <img src={logo1} alt="logo1" className="logo" />
    
     <div className="container">
+    <div className="content-container">
 
       <div className="welcome-message">
-        Welcome to Interpret-me Home page! This website will help you [introduction]!
+      Welcome to <img src={longlogo} alt="longlogo" className="long-logo" />  
+      </div>
       <h1 className = "signinbuttoncontainer">
 
                 <h1 className="signinbuttoncontainer">
             { !isAuthenticated && (
                 <button className="sign-in-btn" onClick={() => loginWithRedirect()}>
-                Sign In
+                Click here to start 
                 </button>
             )}
             </h1>
@@ -30,7 +34,7 @@ const LoginButton = () => {
 
 
       </div>
-    </div>
+      </div>
  </div>
   );
 };

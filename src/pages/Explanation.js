@@ -1,4 +1,3 @@
-
 import '../style/Detailpage.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
@@ -7,49 +6,83 @@ const Explanation = ({ onDetailpage }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
+  const [picture, setPicture] = useState(null);
+  const [selectedItems, setSelectedItems] = useState({ text: false, emoji: false, image: false, location : false, people : false, video : false  });
+  const [descriptions, setDescriptions] = useState({ text: '', emoji: '', image: '', location: '', people: '', video: '' });
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setSelectedItems((prevState) => ({ ...prevState, [name]: checked }));
+  };
+
+  const handleDescriptionChange = (event) => {
+    const { name, value } = event.target;
+    setDescriptions((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can use the q1, q2, and q3 values here to do something with the user's input
     console.log(`Q1: ${q1}, Q2: ${q2}, Q3: ${q3}`);
+    console.log('Selected items:', selectedItems);
+    console.log('Descriptions:', descriptions);
     // Redirect to the next page here
   };
 
   return (
-<div className="logoContainer"> 
+    <div className="logoContainer">
       <img src={logo1} alt="logo1" className="logo" />
-      
-            <div className="container">
 
-        
-      <h1 className="title"> </h1>
-      <form onSubmit={handleSubmit}>
-        <div className="question">
-          <label htmlFor="q1">Please explain why would you like to interpret this Social Media content ? </label>
-          <textarea id="q1" name="q1" value={q1} onChange={(e) => setQ1(e.target.value)} />
-        </div>
-        <div className="question">
-        <label htmlFor="q2">What are some content of the post?</label>
-                <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">
-                    <option value="text">Text</option>
-                    <option value="emoji">Emoji</option>
-                    <option value="option3">image</option>
-                </select>
-        </div>
-
-        <div className="question">
-          <label htmlFor="q3">Please share your initial thoughts and reflections of the uploaded post. </label>
-          <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
-        </div>
-        <div className="button-container">
-        <button onClick={onDetailpage}>Next </button>
-        </div>
-      </form>
+      <div className="container">
+        <h1 className="title"> </h1>
+        <form onSubmit={handleSubmit}>
+          <div className="question">
+            <label htmlFor="picture">Please upload Social Media post you would like to interpret </label>
+            <input
+              type="file"
+              id="picture"
+              name="picture"
+              accept="image/*"
+              onChange={(e) => setPicture(e.target.files[0])}
+            />
+          </div>
+          <div className="question">
+            <label>Please select all applicable media content in the post and describe what you understand from them.*</label>
+            {['text', 'emoji', 'image', 'location', 'people', 'video'].map((item) => (
+              <div key={item}className="checkbox-container">
+                <div className="checkbox-item">
+                <input
+                  type="checkbox"
+                  id={`checkbox-${item}`}
+                  name={item}
+                  checked={selectedItems[item]}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor={`checkbox-${item}`}>{item}</label>
+                </div>
+                <input
+                  type="text"
+                  id={`description-${item}`}
+                  name={item}
+                  value={descriptions[item]}
+                  onChange={handleDescriptionChange}
+                  disabled={!selectedItems[item]}
+                  placeholder={`Describe ${item}`}
+                />
+                  
+              </div>
+            ))}
+          </div>
+          <div className="question">
+            <label htmlFor="q3">Please share your initial thoughts and reflections of the uploaded post. </label>
+            <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
+          </div>
+          <div className="button-container">
+            <button onClick={onDetailpage}>Next </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
   );
 };
 
 export default Explanation;
-
-
