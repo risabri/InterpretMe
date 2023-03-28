@@ -23,6 +23,7 @@ console.log(`${process.env.REACT_APP_API_URL}`)
 function App() {
   const { isAuthenticated } = useAuth0();
   const [currentPage, setCurrentPage] = useState("profile");
+  const [imageURL, setImageURL] = useState('');
 
   const handleInterpret = () => {
     setCurrentPage("demographic");
@@ -80,6 +81,7 @@ function App() {
       {isAuthenticated && currentPage === "thanks" && <Thanks />}
 
 
+ 
 
       
     </div>

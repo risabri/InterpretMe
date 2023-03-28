@@ -3,6 +3,7 @@ import '../style/Authorpost.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
+
 const Authorpost = ({ onAuthorPosttwo }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
