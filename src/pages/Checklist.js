@@ -21,7 +21,7 @@ const Checklist = ({ onNext }) => {
 
   return (
     <div>
-      <h1>Checklist</h1>
+      <h1> Privacy Checklist</h1>
 
   <div className="checklist-item">
 

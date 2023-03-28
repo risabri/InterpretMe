@@ -36,8 +36,9 @@ const Authorposttwo = ({ onAuthorPostthree }) => {
           <label htmlFor="q1">Please reflect as if you’re an immediate family member (Ex: mother, father, brothers, sisters, and cousins) 
           how would you understand this post? What would be possible reasons for the post? Please share your reflections below* </label>
           <textarea id="q1" name="q1" value={q1} onChange={(e) => setQ1(e.target.value)} />
+
         </div>
-        <div className="question">
+        {/* <div className="question">
         <label htmlFor="q2">Please check all the applicable options </label>
                 <select id="q2" name="q2" value={q2} onChange={(e) => setQ2(e.target.value)} className="dropdown">/
                     <option value="noinfo">No information online about the author’s post</option>
@@ -45,7 +46,7 @@ const Authorposttwo = ({ onAuthorPostthree }) => {
                     <option value="noaccess">I do not have access to private profiles to learn more about the author </option>
      
                 </select>
-        </div>
+        </div> */}
 
         <div className="question">
           <label htmlFor="q3">Please reflect with your friend and/or a colleague who have similar identity and lived experiences 
@@ -55,9 +56,8 @@ const Authorposttwo = ({ onAuthorPostthree }) => {
         <div className="question">
         <label htmlFor="q5">Please check all the applicable options </label>
                 <select id="q5" name="q5" value={q5} onChange={(e) => setQ5(e.target.value)} className="dropdown">/
-                    <option value="noinfo">No information online about the author’s post</option>
-                    <option value="fake">This feels like a fake social media profile</option>
-                    <option value="noaccess">I do not have access to private profiles to learn more about the author </option>
+                    <option value="nofriend">I don't have a friend or a colleague with similar identity</option>
+                    <option value="notalk">I don't want to talk to my friends or colleague </option>
      
                 </select>
         </div>

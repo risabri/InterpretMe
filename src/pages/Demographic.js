@@ -45,7 +45,7 @@ const Demographic = ({ onExplanation })  => {
           />
         </div>
         <div className="input-container">
-          <label className="label">Email ID</label>
+          <label className="label">Email address</label>
           <input
             className="text-input"
             type="text"
