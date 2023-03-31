@@ -1,3 +1,33 @@
+# Interpret Me v2 App
+
+- Author: Rita Sabri
+
+## Getting Started
+
+1. Clone the git repository
+
+2. Install npm dependencies
+
+```bash
+cd ./interpretme_v2
+
+npm install
+```
+
+3. Setup env vars in `.env`
+
+4. Run the app in dev
+
+```bash
+npm start
+```
+
+4. Test local app
+    - [http://localhost:3000/](http://localhost:3000/)
+
+
+_____________________
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
