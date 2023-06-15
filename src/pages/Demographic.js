@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../style/Demographic.css';
 import logo1 from '../components/logo1.svg';
+import {save_demographic_data} from '../pages/Fetcher';
 
 
 const Demographic = ({ onExplanation })  => {
@@ -13,10 +14,25 @@ const Demographic = ({ onExplanation })  => {
   const [education, setEducation] = useState('');
   const [race, setRace] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // You can use the state values to store data in the database.
-    console.log({ firstName, lastName, gender, sexuality, education, race });
+    //console.log({ firstName, lastName, gender, sexuality, education, race });
+  
+    try {
+      await save_demographic_data({
+        "FirstName": firstName,
+        "LastName": lastName,
+        "Email": email,
+        "Age": age,
+        "Gender": gender,
+        "Sexuality": sexuality,
+        "Education": education,
+        "Race": race
+      });
+      console.log("Data saved successfully!");
+    } catch (error) {
+      console.log("Error saving data: ", error);
+    }
   };
 
 
@@ -135,9 +151,9 @@ const Demographic = ({ onExplanation })  => {
             <option value="pnts">Prefer not to say</option>
           </select>
         </div>
-        {/* <button type="submit" className="submit-button">
+       <button type="submit" className="submit-button">
           Submit
-        </button> */}
+        </button>
         <button onClick={onExplanation}>Next </button>
       </form>
     </div>

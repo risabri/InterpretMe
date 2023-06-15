@@ -8,6 +8,7 @@ import Authorpost from "./pages/Authorpost";
 import Authorposttwo from "./pages/Authorposttwo";
 import Detailpage from "./pages/Detailpage";
 import Authorpostthree from "./pages/Authorpostthree";
+import Authorpostfour from "./pages/Authorpostfour";
 import Checklist from "./pages/Checklist";
 import AnotherPage from "./pages/AnotherPage";
 import LogoutButton from "./pages/LogoutButton";
@@ -50,6 +51,10 @@ function App() {
     setCurrentPage("authorPostthree");
   };
 
+  const handleAuthorpostfour = () => {
+    setCurrentPage("authorPostfour");
+  };
+
 
    const handleNextChecklist = () => {
     setCurrentPage("checklist");
@@ -75,7 +80,8 @@ function App() {
       {isAuthenticated && currentPage === "detailPage" && <Detailpage onAuthorpost={handleAuthorpost} />}
       {isAuthenticated && currentPage === "authorPost" &&  <Authorpost onAuthorPosttwo={handleAuthorposttwo} />}
       {isAuthenticated && currentPage === "authorPosttwo" &&  <Authorposttwo onAuthorPostthree ={handleAuthorpostthree} />} 
-      {isAuthenticated && currentPage === "authorPostthree" &&  <Authorpostthree onChecklist={handleNextChecklist} />}
+      {isAuthenticated && currentPage === "authorPostthree" &&  <Authorpostthree onAuthorPostfour={handleAuthorpostfour} />}
+      {isAuthenticated && currentPage === "authorPostfour" &&  <Authorpostfour onChecklist={handleNextChecklist} />}
       {isAuthenticated && currentPage === "checklist" && <Checklist onNext={handleAnotherPage} />}
       {isAuthenticated && currentPage === "anotherPage" && <AnotherPage onThanks ={handleThanks} />}
       {isAuthenticated && currentPage === "thanks" && <Thanks />}

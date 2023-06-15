@@ -1,0 +1,28 @@
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .option-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    text-align: left;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .option-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .option-button.selected {
+    background-color: #D77C61;
+    font-weight: bold;
+  }
+  
