@@ -27,7 +27,7 @@ const Explanation = ({ onDetailpage }) => {
   }, [picture]);
 
   	// On file upload (click the upload button)
-	const onClickUpload = (event) => {
+	const onClickUpload = () => {
 
 		// Create an object of formData
 		const formData = new FormData();
@@ -44,7 +44,7 @@ const Explanation = ({ onDetailpage }) => {
 
 		// Request made to the backend api
 		// Send formData object
-		axios.post("http://0.0.0.0:5000/profile_pic_download", formData, {
+		axios.post("https://local.nxsafelab.org/profile_pic_download", formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -101,10 +101,11 @@ const Explanation = ({ onDetailpage }) => {
               accept="image/*"
               onChange={(e) => setPicture(e.target.files[0])}
             />
-            <img alt="preview image" src={imageURL}/>
+          </div>
+          <div>
             <button onClick={onClickUpload}>
-						Upload!
-					</button>
+						  Upload to server!
+					  </button>
           </div>
          
           <div className="question">

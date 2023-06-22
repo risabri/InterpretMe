@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 #logging.basicConfig(filename='record.log', level=logging.DEBUG)
 
-UPLOAD_FOLDER = './public/images/'
+UPLOAD_FOLDER = '../build/static/media/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
@@ -74,4 +74,4 @@ def my_profile():
 if __name__ == '__main__':
   
   
-  app.run( debug=True )
+  app.run( debug = True )
