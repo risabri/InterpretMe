@@ -56,6 +56,9 @@ We include a sample **Apache** configuration (for dev, not yet prod)
     sudo a2enmod ssl proxy http_proxy
 
     sudo systemctl restart apache2.service
+
+    # make sure to set apache www-data permissions
+    sudo chown -R www-data:www-data /var/www/html/InterpretMe/
     ```
 
     > in production, obviously do not use `/etc/ssl/certs/apache-selfsigned.crt` ...

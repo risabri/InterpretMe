@@ -40,7 +40,7 @@ const Explanation = ({ onDetailpage }) => {
 		);
 
 		// Details of the uploaded file
-		console.log(picture.name);
+		console.log('https://local.nxsafelab.org/static/media/'+picture.name);
 
 		// Request made to the backend api
 		// Send formData object
