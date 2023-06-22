@@ -1,4 +1,11 @@
-.env
+
+__pycache__
+*.venv
+*.env
+.flaskenv
+backend/public/images/*.png
+backend/public/images/*.jpg
+
 node_modules/
 build/
 yarn.lock

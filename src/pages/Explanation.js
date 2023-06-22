@@ -2,13 +2,16 @@ import '../style/Explanation.css';
 import React, { useState, useEffect  } from 'react';
 import logo1 from '../components/logo1.svg';
 import { save_explanation_data } from "./Fetcher";
+import axios from 'axios';
+
 
 const Explanation = ({ onDetailpage }) => {
 
   const [selectedItems, setSelectedItems] = useState({ text: false, emoji: false, image: false, location : false, people : false, video : false  });
   const [descriptions, setDescriptions] = useState({ text: '', emoji: '', image: '', location: '', people: '', video: '' });
   const [picture, setPicture] = useState(null);
-  const [imageURL, setImageURL] = useState('');
+  const [imageURL, setImageURL] = useState(null);
+  const [flaskPostResponse, setflaskPostResponse] = useState(null);
 
     
   useEffect(() => {
@@ -22,6 +25,42 @@ const Explanation = ({ onDetailpage }) => {
       };
     }
   }, [picture]);
+
+  	// On file upload (click the upload button)
+	const onClickUpload = (event) => {
+
+		// Create an object of formData
+		const formData = new FormData();
+
+		// Update the formData object
+		formData.append(
+			"file",
+			picture,
+			picture.name
+		);
+
+		// Details of the uploaded file
+		console.log(picture.name);
+
+		// Request made to the backend api
+		// Send formData object
+		axios.post("http://0.0.0.0:5000/profile_pic_download", formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+        }).then((response) => {
+			const res = response.data;
+			setflaskPostResponse({res});
+		  })
+		  .catch((error) => {
+			if (error.response) {
+			  console.log(error.response);
+			  console.log(error.response.status);
+			  console.log(error.response.headers);
+			}
+	
+		})
+	};
 
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -49,7 +88,7 @@ const Explanation = ({ onDetailpage }) => {
 
   return (
     <div className="logoContainer ">
-      <img src={imageURL || logo1} alt="logo1" className={imageURL ? "uploaded-image" : "logo"} />
+      <img src={'imageURL' || logo1} alt="logo1" className={imageURL ? "uploaded-image" : "logo"} />
       <div className="container">
         <h1 className="title"> </h1>
         <form onSubmit={handleSubmit}>
@@ -62,6 +101,10 @@ const Explanation = ({ onDetailpage }) => {
               accept="image/*"
               onChange={(e) => setPicture(e.target.files[0])}
             />
+            <img alt="preview image" src={imageURL}/>
+            <button onClick={onClickUpload}>
+						Upload!
+					</button>
           </div>
          
           <div className="question">
@@ -93,7 +136,7 @@ const Explanation = ({ onDetailpage }) => {
             ))}
           </div>
           <div className="button-container">
-  <button type="submit">Submit</button> 
+   <button type="submit">Submit</button> 
    <button type="button" onClick={onDetailpage}>Next </button> 
 </div>
         </form>
