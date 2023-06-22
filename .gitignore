@@ -9,3 +9,7 @@ backend/public/images/*.jpg
 node_modules/
 build/
 yarn.lock
+.DS_Store
+.vscode
+.env
+.env*

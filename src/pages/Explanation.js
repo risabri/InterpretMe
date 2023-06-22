@@ -88,7 +88,7 @@ const Explanation = ({ onDetailpage }) => {
 
   return (
     <div className="logoContainer ">
-      <img src={'imageURL' || logo1} alt="logo1" className={imageURL ? "uploaded-image" : "logo"} />
+      <img src={imageURL || logo1} alt="logo1" className={imageURL ? "uploaded-image" : "logo"} />
       <div className="container">
         <h1 className="title"> </h1>
         <form onSubmit={handleSubmit}>
