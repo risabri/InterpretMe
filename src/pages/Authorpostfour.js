@@ -2,19 +2,28 @@
 import '../style/Authorpostfour.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
+import { save_authorpostfour_data } from '../pages/Fetcher';
 
 const Authorpostfour = ({onChecklist}) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
-  const [q3, setQ3] = useState('');
-  const [q4, setQ4] = useState('');
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can use the q1, q2, and q3 values here to do something with the user's input
-    console.log(`Q1: ${q1}, Q2: ${q2}, Q3: ${q3}, Q4: ${q4}`);
-    // Redirect to the next page here
+    console.log(`Q1: ${q1}, Q2: ${q2}`);
+
+    try {
+      await save_authorpostfour_data({
+        "interpretation": q1,
+        "harm_level": q2,
+      });
+      console.log("Data saved successfully!");
+    } catch (error) {
+      console.log("Error saving data: ", error);
+    }
   };
+
 
   return (
 <div className="logoContainer"> 
@@ -59,6 +68,7 @@ const Authorpostfour = ({onChecklist}) => {
   </div>
 </div>
         <div className="button-container">
+        <button type="submit" className="submit-button">Submit</button>
             
         <button onClick={onChecklist}>Next</button>
         </div>

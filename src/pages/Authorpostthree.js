@@ -2,19 +2,31 @@
 import '../style/Authorpost.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
+import { save_authorpostthree_data } from '../pages/Fetcher';
 
-const Authorpostthree = ({onAuthorPostfour}) => {
+const Authorpostthree = ({onAuthorpostfour}) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
   const [q4, setQ4] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can use the q1, q2, and q3 values here to do something with the user's input
     console.log(`Q1: ${q1}, Q2: ${q2}, Q3: ${q3}, Q4: ${q4}`);
-    // Redirect to the next page here
+
+    try {
+      await save_authorpostthree_data({
+        "understanding": q1,
+        "options": q2,
+        "mental_health": q3,
+        "media_influence": q4
+      });
+      console.log("Data saved successfully!");
+    } catch (error) {
+      console.log("Error saving data: ", error);
+    }
   };
+
 
   return (
 <div className="logoContainer"> 
@@ -56,8 +68,9 @@ const Authorpostthree = ({onAuthorPostfour}) => {
           <textarea id="q4" name="q4" value={q4} onChange={(e) => setQ4(e.target.value)} />
         </div>
         <div className="button-container">
+        <button type="submit" className="submit-button">Submit</button>
             
-        <button onClick={onAuthorPostfour}>Next</button>
+        <button onClick={onAuthorpostfour}>Next</button>
         </div>
       </form>
     </div>

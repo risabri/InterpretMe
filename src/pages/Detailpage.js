@@ -1,22 +1,22 @@
 
 import '../style/Detailpage.css';
+import {save_detail_data} from '../pages/Fetcher';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 import axios from 'axios'; // Import axios
 import Airtable from 'airtable';
-import {load_post_written} from '../pages/Fetcher';
+
 
 
 const Detailpage = ({ onAuthorpost }) => {
-  const [q1, setQ1] = useState('');
-  const [q2, setQ2] = useState('');
-  const [q3, setQ3] = useState('');
+  const [DP1, setDP1] = useState('');
+  const [DP2, setDP2] = useState('');
   const [picture, setPicture] = useState(null);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await load_post_written({ "detailpage1": q1, "detailpage2": q3 });
+    await save_detail_data({ "detailpage1": DP1, "detailpage2": DP2 });
   }
 
   return (
@@ -30,11 +30,11 @@ const Detailpage = ({ onAuthorpost }) => {
         </div>
         <div className="question">
           <label htmlFor="q1">Please describe why do you like to Interpret this post?* </label>
-          <textarea id="q1" name="q1" value={q1} onChange={(e) => setQ1(e.target.value)} />
+          <textarea id="q1" name="q1" value={DP1} onChange={(e) => setDP1(e.target.value)} />
         </div>
         <div className="question">
           <label htmlFor="q3">How would you use this interpretation as part of your profession? *</label>
-          <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
+          <textarea id="q3" name="q3" value={DP2} onChange={(e) => setDP2(e.target.value)} />
         </div>
         <div className="button-container">
          <button type="submit">Submit</button> 

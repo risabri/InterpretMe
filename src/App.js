@@ -78,9 +78,9 @@ function App() {
       {isAuthenticated && currentPage === "demographic" && <Demographic onExplanation={handleExplanation} />}
       {isAuthenticated && currentPage === "explanation" && <Explanation onDetailpage={handleDetailpage} />}
       {isAuthenticated && currentPage === "detailPage" && <Detailpage onAuthorpost={handleAuthorpost} />}
-      {isAuthenticated && currentPage === "authorPost" &&  <Authorpost onAuthorPosttwo={handleAuthorposttwo} />}
-      {isAuthenticated && currentPage === "authorPosttwo" &&  <Authorposttwo onAuthorPostthree ={handleAuthorpostthree} />} 
-      {isAuthenticated && currentPage === "authorPostthree" &&  <Authorpostthree onAuthorPostfour={handleAuthorpostfour} />}
+      {isAuthenticated && currentPage === "authorPost" &&  <Authorpost onAuthorposttwo={handleAuthorposttwo} />}
+      {isAuthenticated && currentPage === "authorPosttwo" &&  <Authorposttwo onAuthorpostthree ={handleAuthorpostthree} />} 
+      {isAuthenticated && currentPage === "authorPostthree" &&  <Authorpostthree onAuthorpostfour={handleAuthorpostfour} />}
       {isAuthenticated && currentPage === "authorPostfour" &&  <Authorpostfour onChecklist={handleNextChecklist} />}
       {isAuthenticated && currentPage === "checklist" && <Checklist onNext={handleAnotherPage} />}
       {isAuthenticated && currentPage === "anotherPage" && <AnotherPage onThanks ={handleThanks} />}

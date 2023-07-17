@@ -1,19 +1,28 @@
-
+import { save_authorpost_data } from '../pages/Fetcher';
 import '../style/Authorpost.css';
 import React, { useState } from 'react';
 import logo1 from '../components/logo1.svg';
 
 
-const Authorpost = ({ onAuthorPosttwo }) => {
+const Authorpost = ({ onAuthorposttwo }) => {
   const [q1, setQ1] = useState('');
   const [q2, setQ2] = useState('');
   const [q3, setQ3] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can use the q1, q2, and q3 values here to do something with the user's input
     console.log(`Q1: ${q1}, Q2: ${q2}, Q3: ${q3}`);
-    // Redirect to the next page here
+    
+    try {
+      await save_authorpost_data({
+        "author_online_experiences": q3,
+        "social_engagements": q1,
+        "check_option": q2
+      });
+      console.log("Data saved successfully!");
+    } catch (error) {
+      console.log("Error saving data: ", error);
+    }
   };
 
   return (
@@ -52,15 +61,9 @@ const Authorpost = ({ onAuthorPosttwo }) => {
         </select>
         </div>
 
-          {/* <div className="question">
-        <label htmlFor="q3">Please reach out to your friends and family members who have the shared identity, socio-cultural 
-                        context to help you to understand the context of the post. </label>
-        <textarea id="q3" name="q3" value={q3} onChange={(e) => setQ3(e.target.value)} />
-        <label htmlFor="q3">Please share their thoughts and your reflections below. </label>
-        </div>  */}
-
         <div className="button-container">
-        <button onClick={onAuthorPosttwo}>Next</button>
+        <button type="submit" className="submit-button">Submit</button>
+        <button onClick={onAuthorposttwo}>Next</button>
         </div> 
       </form>
     </div>

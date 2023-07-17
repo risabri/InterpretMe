@@ -1,9 +1,23 @@
 import { useState } from "react";
 import '../style/Checklist.css';
+import { save_checklist_data } from '../pages/Fetcher';
 
 const Checklist = ({ onNext }) => {
   const [checkedItems, setCheckedItems] = useState(Array(10).fill(false));
   const allChecked = checkedItems.every((item) => item);
+
+  const items = [
+    "I understand and agree that this interpretation process is ONLY to reflect and contextualize social media posts to avoid personal biases in the interpretation process to upload digital human rights and social justice in the interpretation process to reduce any real time negative consequences.",
+    "I confirm that no personally identifiable information gathered from any party (post author and their stakeholders) and used in any part of the interpretation report.",
+    "I confirm that I have received consent from all parties to include their opinions and reflections in the interpretation report.",
+    "I understand and agree that I have no rights to share or disclose any information gathered in the interpretation process and final report with any individuals, organizations, online platforms, and institutions.",
+    "All the information gathered through the live interpretation process will be kept confidential and will not be disclosed to anyone or for any other purpose other than prevention of wrong punitive action and negative digital footprint.",
+    "I  confirm that any part of the report/full interpretation report will not be used as evidence for legal proceedings/disciplinary against authors/other involved stakeholders.",
+    "I confirm that all the information gathered in this interpretation process are true opinion/reflections of the stakeholders and no information is modified/altered by the interpreter.",
+    "I understand and agree that InterpretMe webtool only helps me to reflect on the social media post in a community-centered approach to contextualize it for better socio-cultural context, I take personal responsibility for making final decisions about the post.",
+    "I understand and agree that this interpretation information/report will be used/stored ONLY three months and after three months, no longer this interpretation valid.",
+    "I agree that I will be held responsible for ensuring that all declarations in this regard are truthful, complete, and accurate."
+  ];
 
   const handleChange = (event) => {
     const { name, checked } = event.target;
@@ -13,8 +27,18 @@ const Checklist = ({ onNext }) => {
     setCheckedItems(newCheckedItems);
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (allChecked) {
+      const checkedStatements = items.filter((_, index) => checkedItems[index]);
+      try {
+        await save_checklist_data({
+          "checklist": `Thanks for checking all the listed items, you agreed on: ${checkedStatements.join(", ")}`
+        });
+        console.log("Data saved successfully!");
+      } catch (error) {
+        console.log("Error saving data: ", error);
+      }
+
       onNext();
     }
   };
